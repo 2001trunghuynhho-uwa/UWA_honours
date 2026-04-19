@@ -4,55 +4,48 @@ Project Overview
 This repository contains the supplementary materials associated with an Honours thesis investigating the formation processes of grinding-patch cross-sectional morphology through controlled experimentation. The project focuses on understanding how grinding duration and active-stone contact area influence surface morphological change on granite substrates.
 
 Repository Contents
-1. Experimental Data
-DEMs.zip
+### 1. Experimental Data
 
-This archive contains Digital Elevation Models (DEMs) generated from photogrammetric reconstruction of granite passive stone surfaces.
+#### 📁 DEMs.zip
+- Contains **Digital Elevation Models (DEMs)** generated from photogrammetry  
+- Exported as **TIFF raster files**  
+- Captured at **20-minute intervals**  
+- Used for **terrain analysis (slope calculation)**  
+- Forms the **primary dataset**
 
-Derived from close-range photogrammetry using Agisoft Metashape
-Exported as TIFF raster files
-Represent surface morphology at 20-minute intervals across each experimental run
-Used for quantitative terrain analysis (slope calculation)
+---
 
-These DEMs form the primary dataset for analysing surface morphological change over time.
+#### 📁 Speed_of_motor_in_experiment_1.zip
+- Contains **motor performance data (RPM)**  
+- Recorded at **0.1-second intervals**  
+- Used to calculate **stroke counts**  
+- Ensures **experimental consistency**
 
-Speed_of_motor_in_experiment_1.zip
+---
 
-This file contains recorded motor performance data from the experimental apparatus.
+#### 📁 Machine_working_video.zip
+- Video documentation of the **mechanical apparatus**  
+- Shows **reciprocal grinding motion**  
+- Provides **methodological transparency**
 
-Includes RPM measurements recorded at 0.1-second intervals
-Used to calculate stroke counts and ensure consistency of grinding motion
-Provides a quantitative record of experimental control conditions
+---
 
-This dataset supports the internal validity of the experiment by documenting mechanical consistency.
+### 2. Analytical Outputs
 
-Machine_working_video.zip
+#### 📊 markdown_statistic_supplyment.html
+- Contains **statistical analysis outputs**  
+- Generated using **R / RMarkdown**  
+- Includes regression and model results  
 
-This archive contains video documentation of the experimental apparatus in operation.
+---
 
-Shows the mechanical grinding system in use
-Demonstrates controlled reciprocal motion
-Documents experimental setup and procedure
+#### 💻 surface_code_for_analysis.R
+- R script used for **data processing and analysis**  
+- Includes:
+  - DEM processing  
+  - Slope calculations  
+  - Statistical modelling  
 
-This serves as visual verification and methodological transparency, allowing replication and evaluation of the experimental design.
-
-2. Analytical Outputs
-markdown_statistic_supplyment.html
-
-This file contains the statistical analysis outputs derived from the experimental data.
-
-Generated using R / RMarkdown
-Includes regression analysis, correlation tests, and model outputs
-Documents relationships between grinding duration, contact area, and surface morphology
-
-This file supports the quantitative interpretation presented in the thesis.
-
-surface_code_for_analysis.R
-
-This script contains the R code used to process and analyse the dataset.
-
-Performs terrain analysis (slope calculation from DEMs)
-Computes Mean Surface Index (MSI)
-Runs statistical models (correlation tests and linear mixed-effects models)
+---
 
 This ensures reproducibility of all analytical results.
