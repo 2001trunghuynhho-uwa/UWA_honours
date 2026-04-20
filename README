@@ -6,16 +6,15 @@ This repository contains the supplementary materials associated with an Honours 
 Repository Contents
 ### 1. Experimental Data
 
-#### 📁 DEMs.zip
-- Contains **Digital Elevation Models (DEMs)** generated from photogrammetry  
-- Exported as **TIFF raster files**  
-- Captured at **20-minute intervals**  
-- Used for **terrain analysis (slope calculation)**  
-- Forms the **primary dataset**
+####  DEMs.zip
+- Contains Digital Elevation Models (DEMs) generated from photogrammetry  
+- Exported as TIFF raster files     
+- Used for terrain analysis (slope calculation) 
+- Captured at every 20-minute intervals of all granite samples
 
 ---
 
-#### 📁 Speed_of_motor_in_experiment_1.zip
+#### Speed_of_motor_in_experiment_1.zip
 - Contains **motor performance data (RPM)**  
 - Recorded at **0.1-second intervals**  
 - Used to calculate **stroke counts**  
@@ -23,24 +22,29 @@ Repository Contents
 
 ---
 
-#### 📁 Machine_working_video.zip
-- Video documentation of the **mechanical apparatus**  
-- Shows **reciprocal grinding motion**  
-- Provides **methodological transparency**
+#### Machine_working_video.zip
+- Video documentation of the **mechanical apparatus
+- Shows **reciprocal grinding motion of the mechanical apparatus  
+
+---
+
+#### sketch_nov6b.ino 
+- the Andruino IDE program written for the controlling of motor rotation, speed, direction and RPM count 
+- Open this file within the IDE software for viewing 
 
 ---
 
 ### 2. Analytical Outputs
 
 #### 📊 markdown_statistic_supplyment.html
-- Contains **statistical analysis outputs**  
-- Generated using **R / RMarkdown**  
-- Includes regression and model results  
+- Generated using R / RMarkdown
+- Contains statistical analysis procedure and outputs    
+- Includes plots, regression and model results  
 
 ---
 
 #### 💻 surface_code_for_analysis.R
-- R script used for **data processing and analysis**  
+- R script used for data processing and analysis for reproducibility   
 - Includes:
   - DEM processing  
   - Slope calculations  
