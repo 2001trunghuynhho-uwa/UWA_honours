@@ -36,14 +36,14 @@ Repository Contents
 
 ### 2. Analytical Outputs
 
-#### 📊 markdown_statistic_supplyment.html
+#### markdown_statistic_supplyment.html
 - Generated using R / RMarkdown
 - Contains statistical analysis procedure and outputs    
 - Includes plots, regression and model results  
 
 ---
 
-#### 💻 surface_code_for_analysis.R
+#### surface_code_for_analysis.R
 - R script used for data processing and analysis for reproducibility   
 - Includes:
   - DEM processing  
