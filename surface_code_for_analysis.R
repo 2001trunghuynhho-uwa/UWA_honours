@@ -1,18 +1,40 @@
 # ------------------------------
 # Packages
 # ------------------------------
+# List of required packages
+required_packages <- c(
+  "terra",
+  "tmap",
+  "tidyverse",
+  "lme4",
+  "lmerTest",
+  "lattice",
+  "MuMIn",
+  "flextable",
+  "broom.mixed",
+  "officer"
+)
+
+# Install missing packages
+installed_packages <- rownames(installed.packages())
+
+for(pkg in required_packages){
+  if(!(pkg %in% installed_packages)){
+    install.packages(pkg)
+  }
+}
+
+##########
 library(terra)
 library(tmap)
 library(tidyverse)
-library(tidyr)
-library(purrr)
-library(ggplot2)
 library(lme4)
 library(lmerTest)
 library(lattice)
 library(MuMIn)
 library(flextable)
 library(broom.mixed)
+library(officer)
 
 
 # ------------------------------
@@ -98,14 +120,14 @@ plot_slope_0_120 <- function(dem_dir, run_id,
   hs0   <- shade(slope0_rad,   aspect0_rad,   angle = hs_angle, direction = hs_dir)
   hs120 <- shade(slope120_rad, aspect120_rad, angle = hs_angle, direction = hs_dir)
   
-  # Optional: boost hillshade contrast a bit (often helps a lot)
+  # boost hillshade contrast
   hs0   <- clamp((hs0   - 0.4) * 1.4 + 0.4, 0, 1)
   hs120 <- clamp((hs120 - 0.4) * 1.4 + 0.4, 0, 1)
   
-  # ---- Paper-like breaks (more resolution at low slopes) ----
+  # ---- breaks (more resolution at low slopes) ----
   breaks <- c(0, 2, 5, 8, 12, 16, 20, 25, 30, 35, 45, 60, 90)
   
-  # ---- Paper-like palette (green -> yellow -> orange -> brown -> dark) ----
+  # ----  palette (green -> yellow -> orange -> brown -> dark) ----
   slope_cols <- c(
     "#1a9850", "#66bd63", "#a6d96a", "#d9ef8b",
     "#fee08b", "#fdae61", "#f46d43", "#d73027",
@@ -173,7 +195,6 @@ ts_table <- ts_all |>
 #  theme_booktabs() |> 
 #  autofit() |>  
 #  align(align = "center", part = "all")
-
 # save_as_docx(f, path = "/Folder_for_Honour_experimentation (UWA 2025-2026)/report1.docx")
 
 
@@ -251,17 +272,6 @@ pearson_table_word <- pearson_table %>%
     p = p_value
   )
 
-ft <- flextable(pearson_table_word)
-ft <- ft %>% 
-  theme_booktabs()  %>% 
-  autofit() %>% 
-  bold(part = "header") %>% 
-  align(align = "center", part = "all") %>% 
-  set_caption(
-    caption = "Table X. Per-run Pearson correlation between grinding intensity and MSI."
-  )
-
-# save_as_docx(ft, path = "/Folder_for_Honour_experimentation (UWA 2025-2026)/tabe1.docx")
 
 ann_run <- ts_alpearson_table_wordann_run <- ts_all_df %>%
   group_by(run) %>%
@@ -356,8 +366,6 @@ ggplot(coef_df, aes(Intercept, Slope, colour = row.names(coefficients))) +
        fill = "run")
 
 cor.test(coef_df$Intercept, coef_df$Slope)
-
-
 
 # ------------------------------
 # PHASE 5: Fitting a LMM 
@@ -481,12 +489,11 @@ lm_pred <- ts_all_df %>%
                       ~ predict(.x, newdata = data.frame(time_min = .y)))
   )
 
+# Plot  
 ggplot(ts_all_df, aes(time_min, slope_mean,
                       colour = material,
                       shape  = contact_area)) +
-  
   geom_point(size = 2.5) +
-  
   facet_wrap(~ run, nrow = 3, scales = "free_y") +
   
   # Mixed model conditional fits
@@ -494,7 +501,7 @@ ggplot(ts_all_df, aes(time_min, slope_mean,
             aes(y = fit, colour = material),
             linewidth = 0.9) +
   
-  # ---- NEW: simple LM per run ----
+  # simple LM per run 
 geom_line(data = lm_pred,
           aes(x = time_min, y = fit_lm),
           colour = "blue",
@@ -510,11 +517,8 @@ geom_line(data = lm_pred,
   labs(x = "Grinding duration (mins)",
        y = "MSI",
        colour = "Material of active-stone") +
-  
   scale_shape_discrete(name = "Contact Area of active-stone") +
-  
   theme_bw() +
-  
   theme(
     strip.text = element_text(size = 11, face = "bold"),
     axis.title = element_text(size = 12),
@@ -524,9 +528,7 @@ geom_line(data = lm_pred,
     plot.title = element_text(size = 14, face = "bold"),
     axis.title.y = element_text(vjust = 3)
   ) +
-  
   scale_x_continuous(breaks = seq(0,120,20))
-
 
 ## Now we reduce the model 
 m1 <- lmer(slope_mean ~ time_min*as.factor(contact_area) + (1 | run) + (0 + time_min | run),
@@ -623,13 +625,7 @@ doc <- body_add_par(doc, "Model summary:", style = "Normal")
 for (ln in summary_lines) {
   doc <- body_add_par(doc, ln, style = "Normal")
 }
-
 print(doc, target = "m1_model_table.docx")
-
-
-
-
-
 
 ### Diagnostics of the best models. 
 # Random effects dotplot
