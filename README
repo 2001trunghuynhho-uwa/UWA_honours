@@ -11,7 +11,9 @@ Repository Contents
 - Exported as TIFF raster files     
 - Used for terrain analysis (slope calculation) 
 - Captured at every 20-minute intervals of all granite samples
-
++ Note: Due to GitHub file-size limitations, this .zip files cannot be previewed directly within the browser. 
+ To view,  download this file by clicking on file within the repository and click the “Download raw file” 
+ button located in the upper-right corner (next to the word Raw) of the GitHub file page.   
 ---
 
 #### Speed_of_motor_in_experiment_1.zip
@@ -19,13 +21,17 @@ Repository Contents
 - Recorded at **0.1-second intervals**  
 - Used to calculate **stroke counts**  
 - Ensures **experimental consistency**
-
++ Note: Due to GitHub file-size limitations, this .zip files cannot be previewed directly within the browser. 
+ To view,  download this file by clicking on file within the repository and click the “Download raw file” 
+ button located in the upper-right corner (next to the word Raw) of the GitHub file page. 
 ---
 
 #### Machine_working_video.zip
 - Video documentation of the **mechanical apparatus
-- Shows **reciprocal grinding motion of the mechanical apparatus  
-
+- Shows reciprocal grinding motion of the mechanical apparatus  
++ Note: Due to GitHub file-size limitations, this .zip files cannot be previewed directly within the browser. 
+ To view,  download this file by clicking on file within the repository and click the “Download raw file” 
+ button located in the upper-right corner of the GitHub file page. 
 ---
 
 #### sketch_nov6b.ino 
